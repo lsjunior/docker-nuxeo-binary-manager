@@ -34,8 +34,12 @@ fi
 
 if [ ! -d $DST ]
 then
-  echo "$DST must be a directory"
-  ERR=1
+  mkdir -p $DST
+  if [ $? -ne 0]
+  then
+    echo "$DST must be a directory"
+    ERR=1
+  fi
 fi
 
 if [ $ERR -eq 0 ]
