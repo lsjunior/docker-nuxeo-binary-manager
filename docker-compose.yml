@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  devops:
+    image: lsjunior/docker-nuxeo-binary-manager
+    volumes:
+      - ./docs/input.txt:/input.txt:ro
+      - D:/Trabalho/SF:/mnt:rw
+    # 1 - mv
+    #environment:
+    #  - SRC=/mnt/data
+    #  - DST=/mnt/garbage
+    #  - INPUT=/input.txt
+    #command:
+    #  - /mv.sh
+    # 2 - tar
+    #environment:
+    #  - SRC=/mnt/garbage
+    #  - DST=/mnt/dst.tar.gz
+    #command:
+    #  - /tar.sh
+    # 3 - rm
+    environment:
+      - INPUT=/input.txt
+      - SRC=/mnt/garbage
+    command:
+      - /rm.sh
